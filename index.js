@@ -1,20 +1,25 @@
+'use strict' 
 
 module.exports = function( persistentStore ) {
- 
+  
   var cache = {};
   
-  return {
-    load: function(sid) { 
-      var e = cache[sid];
-      return e || persistentStore.load(sid);
-    },
-    save: function (sid, data) {
-      cache[sid] = data;
-      return persistentStore.save(sid, data);
-    },
-    remove: function(sid) {
-      delete cache[sid];
-      return persistentStore.remove(sid);
+  this.get = function * (sid) { 
+    let e = cache[sid];
+    if(!e) {
+      e = yield persistentStore.get(sid);
     }
-  }  
+    return e;
+  };
+  this.set = function * (sid, session, ttl) {
+    cache[sid] = session;
+    let r = yield persistentStore.set(sid, session, ttl);
+    return r;
+  };
+  this.destroy = function * (sid) {
+    delete cache[sid];
+    return persistentStore.destroy(sid);
+  }
+
+  return this;
 }
