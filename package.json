@@ -1,0 +1,26 @@
+{
+  "name": "koa-cached-session-store",
+  "version": "1.0.0",
+  "description": "A decorator for session store that calls the underlying [database-driven] store with a simple caching mechanism, and thus makes the session both persistent and very efficient",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/dharmax/koa-cached-session-store.git"
+  },
+  "keywords": [
+    "cache",
+    "koa",
+    "store",
+    "session",
+    "passport"
+  ],
+  "author": "avi tshuva, ephi gabay, taykey",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/dharmax/koa-cached-session-store/issues"
+  },
+  "homepage": "https://github.com/dharmax/koa-cached-session-store"
+}
